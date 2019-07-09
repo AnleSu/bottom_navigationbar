@@ -1,4 +1,9 @@
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'pageOne.dart';
+import 'pageTwo.dart';
+import 'pageThree.dart';
 
 void main() => runApp(MyApp());
 
@@ -89,14 +94,31 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            ListTile(
+              title: Text('pageOne'),
+              onTap: () {
+                Navigator.push(context, new CupertinoPageRoute(
+                  builder: (context) => new PageOne()
+                ));
+              },
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+             ListTile(
+              title: Text('pageTwo'),
+              onTap: () {
+                Navigator.push(context, new CupertinoPageRoute(
+                  builder: (context) => new PageTwo()
+                ));
+              },
+            ),
+             ListTile(
+              title: Text('pageThree'),
+              onTap: () {
+                Navigator.push(context, new CupertinoPageRoute(
+                  builder: (context) => new PageThree()
+                ));
+              },
             ),
           ],
         ),
