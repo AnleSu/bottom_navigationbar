@@ -17,6 +17,8 @@ class _PageThreeState extends State<PageThree> {
   ];
   int index = 0;
   final bodyList = [HomePage(),MessagePage(),MinePage()];
+  final pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +27,7 @@ class _PageThreeState extends State<PageThree> {
         currentIndex: index,
         onTap: (int i) {
           setState(() {
+            pageController.jumpToPage(i);
             index = i;
           });
           
@@ -36,23 +39,15 @@ class _PageThreeState extends State<PageThree> {
       ),
       
       
-       body: Stack(
-          children: [
-            Offstage(
-              offstage: index != 0,
-              child: bodyList[0],
-            ),
-            Offstage(
-              offstage: index != 1,
-              child: bodyList[1],
-            ),
-            Offstage(
-              offstage: index != 2,
-              child: bodyList[2],
-            ),
-          ],
-        )
-       
+       body: PageView(
+         controller: pageController,
+         children: bodyList,
+        //  onPageChanged: (int i) {
+        //    setState(() {
+        //     index = i;
+        //   });
+        //  },
+       )
       
     );
   }

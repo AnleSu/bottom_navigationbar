@@ -5,7 +5,7 @@ class MessagePage extends StatefulWidget {
   _MessagePageState createState() => _MessagePageState();
 }
 
-class _MessagePageState extends State<MessagePage> {
+class _MessagePageState extends State<MessagePage> with AutomaticKeepAliveClientMixin {
   int count = 0;
 
   void add() {
@@ -13,6 +13,9 @@ class _MessagePageState extends State<MessagePage> {
       count++;
     });
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {

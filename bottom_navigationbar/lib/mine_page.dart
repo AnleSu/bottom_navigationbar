@@ -5,7 +5,7 @@ class MinePage extends StatefulWidget {
   _MinePageState createState() => _MinePageState();
 }
 
-class _MinePageState extends State<MinePage> {
+class _MinePageState extends State<MinePage> with AutomaticKeepAliveClientMixin {
   int count = 0;
 
   void add() {
@@ -13,6 +13,9 @@ class _MinePageState extends State<MinePage> {
       count++;
     });
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
