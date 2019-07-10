@@ -28,7 +28,7 @@ class _PageThreeState extends State<PageThree> {
         onTap: (int i) {
           setState(() {
             pageController.jumpToPage(i);
-            index = i;
+            // index = i;
           });
           
         },
@@ -42,11 +42,11 @@ class _PageThreeState extends State<PageThree> {
        body: PageView(
          controller: pageController,
          children: bodyList,
-        //  onPageChanged: (int i) {
-        //    setState(() {
-        //     index = i;
-        //   });
-        //  },
+         onPageChanged: (int i) {
+           setState(() {
+            index = i;//改变index要写在这里 修复侧滑切换页面bottombar的currentIndex不改变的问题
+          });
+         },
        )
       
     );
