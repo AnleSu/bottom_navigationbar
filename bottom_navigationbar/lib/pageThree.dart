@@ -42,6 +42,7 @@ class _PageThreeState extends State<PageThree> {
        body: PageView(
          controller: pageController,
          children: bodyList,
+         physics: NeverScrollableScrollPhysics(),//禁止滑动
          onPageChanged: (int i) {
            setState(() {
             index = i;//改变index要写在这里 修复侧滑切换页面bottombar的currentIndex不改变的问题
