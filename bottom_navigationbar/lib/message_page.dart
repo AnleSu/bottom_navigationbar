@@ -26,12 +26,7 @@ class _MessagePageState extends State<MessagePage> with AutomaticKeepAliveClient
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body:
-            Center(child: Text('攻略资讯: $count', style: TextStyle(fontSize: 30))),
-        floatingActionButton: FloatingActionButton(
-          onPressed: add,
-          child: Icon(Icons.add),
-          heroTag: null,
-        ));
+        body: Container()
+            );
   }
 }

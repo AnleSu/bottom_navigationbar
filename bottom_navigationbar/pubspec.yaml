@@ -45,7 +45,12 @@ flutter:
    - assets/images/展开.png
    - assets/images/收起.png
    - assets/images/待接单.png
-
+   - assets/images/云.png
+   - assets/images/太阳.png
+   - assets/images/人.png
+   - assets/images/WechatIMG246.jpeg
+   - assets/images/头像.png
+   - assets/images/4s金融.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

@@ -55,6 +55,25 @@ class MMCPage extends StatefulWidget {
 class _MMCPageState extends State<MMCPage> with SingleTickerProviderStateMixin {
   Animation animation;
   AnimationController animationController;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    animationController = new AnimationController(
+        vsync: this, duration: Duration(milliseconds: 200));
+    animation = new Tween(begin: 0.0, end: 0.5).animate(animationController);
+  }
+
+  _changeTrailing(bool expand) {
+    setState(() {
+      if (expand) {
+        animationController.reverse();
+      } else {
+        animationController.forward();
+      }
+    });
+  }
+
   final List lzData = <Widget>[
     BanchItem(
       title: '待接单',
@@ -104,25 +123,6 @@ class _MMCPageState extends State<MMCPage> with SingleTickerProviderStateMixin {
   bool orderExpand = true;
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    animationController = new AnimationController(
-        vsync: this, duration: Duration(milliseconds: 200));
-    animation = new Tween(begin: 0.0, end: 0.5).animate(animationController);
-  }
-
-  _changeTrailing(bool expand) {
-    setState(() {
-      if (expand) {
-        animationController.reverse();
-      } else {
-        animationController.forward();
-      }
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Container(
         color: Color(0xFFF8F8F8),
@@ -137,7 +137,7 @@ class _MMCPageState extends State<MMCPage> with SingleTickerProviderStateMixin {
                 },
                 child: Container(
                   height: 35,
-                  padding: EdgeInsets.only(left: 56,right: 56),
+                  padding: EdgeInsets.only(left: 56, right: 56),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
