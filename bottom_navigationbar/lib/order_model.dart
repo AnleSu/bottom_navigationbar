@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -92,7 +93,7 @@ class DatabaseHelper {
   DatabaseHelper.internal();
 
   Future<Database> get db async {
-    if (_db != null) {
+    if (_db != null && _db.isOpen) {
       return _db;
     }
     _db = await initDb();
@@ -195,8 +196,9 @@ class DatabaseHelper {
         where: "$orderNo = ?", whereArgs: [order.orderNo]);
   }
 
-  Future close() async {
+  close() async {
     var dbClient = await db;
-    return dbClient.close();
+    dbClient.close();
+    // _db = null;
   }
 }

@@ -103,10 +103,10 @@ class _OrderPageState extends State<OrderPage> {
           .loadString("assets/json/order.json");
       List list = json.decode(jsonStr);
       List<Order> modelList = list.map((item) => Order.fromJson(item)).toList();
-      // db.batchInsertOrders(modelList);
-      modelList.forEach((v) => db.insertOrder(v));
+      await db.batchInsertOrders(modelList);
+      // modelList.forEach((v) => db.insertOrder(v));
       
-      // await db.close();
+      await db.close();
     }
 
     _getOrderFromDB() async {
