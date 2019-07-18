@@ -1,16 +1,22 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'order_page.dart';
 
 class BanchItem extends StatelessWidget {
   final int number;
   final String title;
   final String imgName;
-  BanchItem({this.number, this.title, this.imgName});
+  final GestureTapCallback onTap;
+  BanchItem({this.number, this.title, this.imgName, this.onTap});
   @override
   Widget build(BuildContext context) {
     return Container(
         width: 80,
         alignment: Alignment.center,
-        child: Column(
+        child: InkWell(
+          onTap: onTap,
+            child: Column(
           children: <Widget>[
             Stack(
               children: <Widget>[
@@ -43,7 +49,7 @@ class BanchItem extends StatelessWidget {
                   color: Color(0xFF333333),
                 ))
           ],
-        ));
+        )));
   }
 }
 
@@ -74,11 +80,18 @@ class _MMCPageState extends State<MMCPage> with SingleTickerProviderStateMixin {
     });
   }
 
-  final List lzData = <Widget>[
+  
+
+  bool orderExpand = true;
+
+  @override
+  Widget build(BuildContext context) {
+    final List lzData = <Widget>[
     BanchItem(
       title: '待接单',
       imgName: 'assets/images/待接单.png',
       number: 7,
+      
     ),
     BanchItem(
       title: '跟进中',
@@ -102,6 +115,9 @@ class _MMCPageState extends State<MMCPage> with SingleTickerProviderStateMixin {
       title: '待确认',
       imgName: 'assets/images/待接单.png',
       number: 7,
+      onTap: () {
+        Navigator.push(context, CupertinoPageRoute(builder: (context) => OrderPage()));
+      },
     ),
     BanchItem(
       title: '风控订单',
@@ -120,10 +136,6 @@ class _MMCPageState extends State<MMCPage> with SingleTickerProviderStateMixin {
     ),
   ];
 
-  bool orderExpand = true;
-
-  @override
-  Widget build(BuildContext context) {
     return Container(
         color: Color(0xFFF8F8F8),
         child: SingleChildScrollView(

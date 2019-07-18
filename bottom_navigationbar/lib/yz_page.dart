@@ -95,10 +95,11 @@ class _YZPageState extends State<YZPage> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: AlignmentDirectional.topStart,
+      
+      alignment: AlignmentDirectional.topCenter,
       children: <Widget>[
         AnimationBack(controller: _controller,),
-        Center(child: ListView(controller: _controller, children: _cards,),),
+        Container(child: ListView(controller: _controller, children: _cards,),),
       ],
       
     );
